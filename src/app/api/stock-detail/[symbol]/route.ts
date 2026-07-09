@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 /** Simulated detail data for VINE (Fresh Vine Wine IPO) */
 function vineDetail() {
   const prevClose = 9.20
@@ -44,10 +46,10 @@ export async function GET(
 
   try {
     const [quoteRes, profileRes, metricsRes, recRes] = await Promise.all([
-      fetch(`https://finnhub.io/api/v1/quote?symbol=${upper}&token=${apiKey}`),
-      fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${upper}&token=${apiKey}`),
-      fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${upper}&metric=all&token=${apiKey}`),
-      fetch(`https://finnhub.io/api/v1/stock/recommendation?symbol=${upper}&token=${apiKey}`),
+      fetch(`https://finnhub.io/api/v1/quote?symbol=${upper}&token=${apiKey}`, { cache: 'no-store' }),
+      fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${upper}&token=${apiKey}`, { cache: 'no-store' }),
+      fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${upper}&metric=all&token=${apiKey}`, { cache: 'no-store' }),
+      fetch(`https://finnhub.io/api/v1/stock/recommendation?symbol=${upper}&token=${apiKey}`, { cache: 'no-store' }),
     ])
 
     const [quote, profile, metricsData, recData] = await Promise.all([

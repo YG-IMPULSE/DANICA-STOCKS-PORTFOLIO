@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 const CATEGORIES = ['general', 'forex', 'crypto', 'merger'] as const
 
 // Pinned announcement — Fresh Vine Wine / VINE IPO
@@ -28,7 +30,7 @@ export async function GET() {
       CATEGORIES.map((cat) =>
         fetch(
           `https://finnhub.io/api/v1/news?category=${cat}&token=${apiKey}`,
-          { next: { revalidate: 180 } }
+          { cache: 'no-store' }
         )
           .then((r) => (r.ok ? r.json() : []))
           .then((items: Record<string, unknown>[]) =>

@@ -1,0 +1,187 @@
+.page {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 430px;
+  min-height: 100dvh;
+}
+
+/* ── Header ──────────────────────────── */
+.header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 56px 20px 20px;
+}
+
+.backBtn {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 40px;
+  justify-content: center;
+  transition: border-color 0.15s;
+  width: 40px;
+}
+.backBtn:hover { border-color: var(--orange); color: var(--orange); }
+
+.title {
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ── Card ────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+.cardHeader {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.cardIcon {
+  align-items: center;
+  background: var(--orange-light);
+  border-radius: 12px;
+  color: var(--orange);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.cardTitle {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cardSub {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+
+/* ── Form ────────────────────────────── */
+.form { display: flex; flex-direction: column; gap: 14px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.inputWrap {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.input {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 15px;
+  padding: 12px 44px 12px 14px;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.input:focus {
+  border-color: var(--orange);
+  outline: none;
+}
+.input::placeholder { color: var(--text-muted); }
+
+.eyeBtn {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  position: absolute;
+  right: 4px;
+  width: 40px;
+}
+.eyeBtn:hover { color: var(--text-primary); }
+
+/* ── Hints ───────────────────────────── */
+.hints {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hintOk  { color: var(--green);     font-size: 12px; font-weight: 600; }
+.hintOff { color: var(--text-muted); font-size: 12px; font-weight: 500; }
+
+/* ── Messages ────────────────────────── */
+.errorBox {
+  background: var(--red-dim);
+  border: 1px solid rgba(220,38,38,0.2);
+  border-radius: 10px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+}
+
+.successBox {
+  background: var(--green-dim);
+  border: 1px solid rgba(22,163,74,0.2);
+  border-radius: 10px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+}
+
+/* ── Submit ──────────────────────────── */
+.submitBtn {
+  background: var(--orange);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 4px;
+  padding: 14px;
+  transition: background 0.15s, transform 0.1s;
+  width: 100%;
+}
+.submitBtn:hover   { background: var(--orange-dark); }
+.submitBtn:active  { transform: scale(0.98); }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.spacer { height: 48px; }
+
+/* ── Desktop ─────────────────────────── */
+@media (min-width: 768px) {
+  .page   { margin-left: 240px; }
+  .header { padding: 40px 40px 20px; }
+  .card   { margin: 0 40px; }
+}
