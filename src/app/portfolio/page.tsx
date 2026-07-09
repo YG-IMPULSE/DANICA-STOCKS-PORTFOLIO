@@ -264,10 +264,12 @@ export default function PortfolioPage() {
                     <div className={styles.watchRight}>
                       {d?.isLoading ? (
                         <div className={styles.watchSkeleton} />
+                      ) : !d?.currentPrice ? (
+                        <p className={styles.watchPrice} style={{ color: 'var(--text-muted)' }}>—</p>
                       ) : (
                         <>
                           <p className={styles.watchPrice}>
-                            ${(d?.currentPrice ?? 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            ${d.currentPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           </p>
                           <p className={`${styles.watchPct} ${up ? styles.watchUp : styles.watchDown}`}>
                             {up ? '+' : ''}{pct.toFixed(2)}%
