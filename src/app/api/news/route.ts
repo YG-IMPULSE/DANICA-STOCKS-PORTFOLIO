@@ -2,6 +2,21 @@ import { NextResponse } from 'next/server'
 
 const CATEGORIES = ['general', 'forex', 'crypto', 'merger'] as const
 
+// Pinned announcement — Fresh Vine Wine / VINE IPO
+const PINNED_NEWS = [
+  {
+    id: 9000001,
+    headline: 'Fresh Vine Wine (VINE) Prices IPO at $9–$10 Per Share on NYSE American',
+    summary:
+      'Somnium Wine, operating as Fresh Vine Wine, Inc., has launched its initial public offering of 2,200,000 shares of common stock priced between $9.00 and $10.00 per share. The company is selling all shares offered under this prospectus and has applied to list its common stock on the NYSE American under the ticker symbol "VINE". Prior to this offering, there has been no public market for the company\'s common stock. Fresh Vine Wine is a lifestyle wine brand targeting health-conscious consumers with low-calorie, low-carbohydrate premium wines.',
+    source: 'PrivateOptions Research',
+    url: 'https://www.nyse.com/quote/XASE:VINE',
+    image: '',
+    datetime: 1752019200,
+    category: 'general',
+  },
+]
+
 export async function GET() {
   const apiKey = process.env.FINNHUB_API_KEY
   if (!apiKey) {
@@ -39,7 +54,7 @@ export async function GET() {
     // Sort newest first
     unique.sort((a, b) => ((b.datetime as number) ?? 0) - ((a.datetime as number) ?? 0))
 
-    return NextResponse.json(unique.slice(0, 50))
+    return NextResponse.json([...PINNED_NEWS, ...unique.slice(0, 50)])
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }

@@ -64,6 +64,7 @@ const SECTOR_STOCKS: Record<Sector, { symbol: string; label?: string }[]> = {
     { symbol: 'HD' },  { symbol: 'MCD' },  { symbol: 'SBUX' },
     { symbol: 'NKE' }, { symbol: 'DIS' },  { symbol: 'PG' },
     { symbol: 'KO' },  { symbol: 'PEP' },  { symbol: 'LOW' },
+    { symbol: 'VINE', label: 'Fresh Vine Wine' },
   ],
 }
 

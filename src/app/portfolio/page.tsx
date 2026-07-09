@@ -17,13 +17,14 @@ interface HoldingWithPrice extends Holding {
 }
 
 const PULSE = [
-  { symbol: 'SPY',  label: 'S&P 500' },
-  { symbol: 'QQQ',  label: 'NASDAQ'  },
-  { symbol: 'DIA',  label: 'DOW'     },
-  { symbol: 'NVDA', label: 'NVDA'    },
-  { symbol: 'AAPL', label: 'AAPL'    },
-  { symbol: 'TSLA', label: 'TSLA'    },
-  { symbol: 'GLD',  label: 'GOLD'    },
+  { symbol: 'SPY',  label: 'S&P 500'         },
+  { symbol: 'QQQ',  label: 'NASDAQ'           },
+  { symbol: 'DIA',  label: 'DOW'              },
+  { symbol: 'NVDA', label: 'NVDA'             },
+  { symbol: 'AAPL', label: 'AAPL'             },
+  { symbol: 'TSLA', label: 'TSLA'             },
+  { symbol: 'GLD',  label: 'GOLD'             },
+  { symbol: 'VINE', label: 'Fresh Vine Wine'  },
 ]
 
 interface PulseItem extends Partial<StockData> {
