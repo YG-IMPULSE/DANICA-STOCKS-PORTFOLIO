@@ -62,20 +62,10 @@ export default function LoginPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.logoWrap}>
-          {/* Drop your logo at public/logo.png to use it here */}
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className={styles.logoImg}
-            onError={(e) => {
-              e.currentTarget.style.display = 'none'
-              const fb = e.currentTarget.nextElementSibling as HTMLElement | null
-              if (fb) fb.style.display = 'flex'
-            }}
-          />
-          <div className={styles.logoIcon} style={{ display: 'none' }}>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
+          <div className={styles.logoIcon}>
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="4,38 14,28 24,32 34,14 44,8" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="44" cy="8" r="3.5" fill="currentColor"/>
             </svg>
           </div>
         </div>
