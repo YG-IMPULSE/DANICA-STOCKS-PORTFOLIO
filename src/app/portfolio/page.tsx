@@ -20,7 +20,7 @@ const PULSE = [
   { symbol: 'SPY',  label: 'S&P 500'         },
   { symbol: 'QQQ',  label: 'NASDAQ'           },
   { symbol: 'DIA',  label: 'DOW'              },
-  { symbol: 'VINE', label: 'Fresh Vine Wine'  },
+  { symbol: 'VINE', label: 'VINE'             },
   { symbol: 'NVDA', label: 'NVDA'             },
   { symbol: 'AAPL', label: 'AAPL'             },
   { symbol: 'TSLA', label: 'TSLA'             },
