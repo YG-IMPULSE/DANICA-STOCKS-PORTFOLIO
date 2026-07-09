@@ -77,7 +77,7 @@ export default function LoginPage() {
             </svg>
           </div>
         </div>
-        <h1 className={styles.title}>Danica Portfolio</h1>
+        <h1 className={styles.title}>PrivateOptions</h1>
         <p className={styles.subtitle}>Your private stock tracker</p>
       </div>
 

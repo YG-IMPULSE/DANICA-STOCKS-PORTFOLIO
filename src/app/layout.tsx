@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Danica Portfolio',
+  title: 'PrivateOptions',
   description: 'Private stock portfolio tracker',
 }
 
