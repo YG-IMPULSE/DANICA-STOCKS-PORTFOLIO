@@ -1,0 +1,219 @@
+.container {
+  background: var(--bg);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px 48px;
+}
+
+/* ── Header ────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logoWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.logoImg {
+  border-radius: 20px;
+  height: 72px;
+  width: 72px;
+  object-fit: cover;
+  display: block;
+}
+
+.logoIcon {
+  background: var(--orange-light);
+  border: 2px solid rgba(249, 115, 22, 0.2);
+  border-radius: 20px;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  width: 72px;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ── Form card ──────────── */
+.form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 20px;
+}
+
+.formTitle {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.errorBox {
+  background: var(--red-dim);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: 10px;
+  color: var(--red);
+  font-size: 14px;
+  padding: 10px 14px;
+}
+
+.successBox {
+  background: var(--green-dim);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  border-radius: 10px;
+  color: var(--green);
+  font-size: 14px;
+  padding: 10px 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.input {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 16px;
+  height: 52px;
+  outline: none;
+  padding: 0 16px;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.input::placeholder { color: var(--text-muted); }
+
+.input:focus {
+  border-color: var(--orange);
+  background: var(--bg-card);
+}
+
+/* ── Button ─────────────── */
+.button {
+  background: var(--orange);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  height: 52px;
+  margin-top: 4px;
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+}
+
+.button:active {
+  background: var(--orange-dark);
+  transform: scale(0.98);
+}
+
+.button:disabled { opacity: 0.4; }
+
+/* ── Toggle ─────────────── */
+.toggle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: var(--orange);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+}
+
+/* ── Desktop split-screen ────────── */
+@media (min-width: 768px) {
+  .container {
+    align-items: stretch;
+    background: var(--bg-card);
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 100dvh;
+    padding: 0;
+  }
+
+  .header {
+    align-items: center;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 60px;
+    text-align: center;
+  }
+
+  .logoImg,
+  .logoIcon {
+    height: 96px;
+    width: 96px;
+  }
+
+  .title   { color: #ffffff; font-size: 34px; }
+  .subtitle { color: rgba(255,255,255,0.8); font-size: 16px; }
+
+  .formSection {
+    align-items: center;
+    background: var(--bg-card);
+    display: flex;
+    flex: 0 0 480px;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    padding: 60px 48px;
+  }
+
+  .form {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+  }
+
+  .toggle {
+    margin-top: 24px;
+    text-align: center;
+    width: 100%;
+  }
+}

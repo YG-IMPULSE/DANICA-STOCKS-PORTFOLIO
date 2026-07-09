@@ -1,0 +1,114 @@
+.nav {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  bottom: 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+  display: flex;
+  left: 0;
+  padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+  position: fixed;
+  right: 0;
+  z-index: 100;
+}
+
+@media (min-width: 430px) {
+  .nav {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 430px;
+  }
+}
+
+.item {
+  align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 10px;
+  font-weight: 600;
+  gap: 3px;
+  letter-spacing: 0.2px;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+
+.activeItem { color: var(--orange); }
+
+/* ── Sidebar header — desktop only ── */
+.sidebarHeader { display: none; }
+.sidebarIcon   { display: none; }
+.sidebarName   { display: none; }
+
+@media (min-width: 768px) {
+  .nav {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    border-top: none;
+    bottom: 0;
+    box-shadow: 2px 0 16px rgba(0,0,0,0.06);
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 0;
+    padding: 0 0 24px;
+    right: auto;
+    top: 0;
+    transform: none;
+    width: 240px;
+  }
+
+  .sidebarHeader {
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 24px 20px 20px;
+  }
+
+  .sidebarIcon {
+    align-items: center;
+    background: var(--orange-light);
+    border: 1.5px solid rgba(249,115,22,0.2);
+    border-radius: 12px;
+    color: var(--orange);
+    display: flex;
+    flex-shrink: 0;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+
+  .sidebarName {
+    color: var(--text-primary);
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .item {
+    align-items: center;
+    border-radius: 12px;
+    flex: none;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 600;
+    gap: 12px;
+    justify-content: flex-start;
+    margin: 2px 12px;
+    padding: 11px 16px;
+    transition: background 0.15s, color 0.15s;
+    width: calc(100% - 24px);
+  }
+
+  .item:hover { background: var(--bg); }
+
+  .activeItem {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+
+  .activeItem:hover { background: var(--orange-light); }
+}

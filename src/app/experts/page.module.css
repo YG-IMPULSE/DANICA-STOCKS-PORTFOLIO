@@ -1,0 +1,126 @@
+.page { background: var(--bg); min-height: 100dvh; }
+
+.header { padding: 56px 20px 16px; }
+
+.title {
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section { padding: 0 20px 24px; }
+
+
+.sectionTitle {
+  align-items: center;
+  color: var(--text-primary);
+  display: flex;
+  font-size: 17px;
+  font-weight: 700;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.sectionTitle::before {
+  background: var(--orange);
+  border-radius: 3px;
+  content: '';
+  display: inline-block;
+  height: 18px;
+  width: 4px;
+  flex-shrink: 0;
+}
+
+
+.sectionSub {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 14px;
+  margin-left: 14px;
+  margin-top: -6px;
+}
+
+/* Rating cards */
+.recCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 10px;
+  padding: 16px;
+}
+
+.recHeader {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.recSymbol { color: var(--text-primary); font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
+.recName   { color: var(--text-secondary); flex: 1; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.recBadge {
+  border-radius: 8px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+}
+
+/* Analyst bars */
+.bars { display: flex; flex-direction: column; gap: 9px; }
+
+.barRow { align-items: center; display: flex; gap: 10px; }
+
+.barLabel { color: var(--text-secondary); font-size: 12px; min-width: 82px; }
+
+.barTrack {
+  background: var(--bg-input);
+  border-radius: 4px;
+  flex: 1;
+  height: 7px;
+  overflow: hidden;
+}
+
+.barFill { border-radius: 4px; height: 100%; min-width: 3px; transition: width 0.6s ease; }
+
+.barCount { color: var(--text-primary); font-size: 12px; font-weight: 700; min-width: 22px; text-align: right; }
+
+.recPeriod { color: var(--text-muted); font-size: 11px; margin-top: 8px; text-align: right; }
+.recLoading { color: var(--text-muted); font-size: 13px; padding: 4px 0; }
+
+.noHoldings {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+/* Insight cards */
+.insightCard {
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+  padding: 16px;
+}
+
+.insightIcon { flex-shrink: 0; font-size: 24px; margin-top: 2px; }
+.insightTitle { color: var(--text-primary); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.insightBody  { color: var(--text-secondary); font-size: 13px; line-height: 1.55; }
+
+.spacer { height: 88px; }
+
+/* ── Desktop ─────────────────── */
+@media (min-width: 768px) {
+  .page    { margin-left: 240px; }
+  .header  { padding: 40px 40px 16px; }
+  .section { padding: 0 40px 24px; }
+  .spacer  { height: 40px; }
+}

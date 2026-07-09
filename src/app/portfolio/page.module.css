@@ -1,0 +1,208 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ── Header ──────────────────────────── */
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 56px 20px 8px;
+}
+
+.greeting {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.name {
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+}
+
+.logoutBtn {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  color: var(--text-secondary);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+  width: 40px;
+}
+
+.logoutBtn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ── Summary Card ─────────────────────── */
+.summaryCard {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(249, 115, 22, 0.3);
+  margin: 16px 20px;
+  padding: 24px;
+}
+
+.summaryLabel {
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.summaryValue {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+}
+
+.summaryPnl {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pnlBadge {
+  background: rgba(255,255,255,0.22);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+}
+
+.pnlAmt {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ── Holdings ─────────────────────────── */
+.holdings {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.holdingsHeader {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.holdingsTitle {
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.holdingsTitle::before {
+  content: '';
+  background: var(--orange);
+  border-radius: 3px;
+  display: inline-block;
+  height: 18px;
+  width: 4px;
+}
+
+.holdingsBadge {
+  background: var(--orange-light);
+  border: 1px solid rgba(249,115,22,0.2);
+  border-radius: 20px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+}
+
+/* ── Skeletons ────────────────────────── */
+.skeletonList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton {
+  animation: pulse 1.5s ease-in-out infinite;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  height: 110px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Empty ────────────────────────────── */
+.empty {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 2.2;
+  padding: 56px 20px;
+  text-align: center;
+}
+
+.spacer { height: 88px; }
+
+/* ── Floating Action Button ─────────────── */
+.fab {
+  align-items: center;
+  background: var(--orange);
+  border-radius: 16px;
+  bottom: 90px;
+  box-shadow: 0 8px 24px rgba(249,115,22,0.4);
+  color: #fff;
+  display: flex;
+  height: 52px;
+  justify-content: center;
+  position: fixed;
+  right: 20px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  width: 52px;
+  z-index: 99;
+}
+
+.fab:active {
+  box-shadow: 0 4px 12px rgba(249,115,22,0.35);
+  transform: scale(0.93);
+}
+
+@media (min-width: 430px) {
+  .fab { right: calc(50% - 195px); }
+}
+
+/* ── Desktop ────────────────────────── */
+.holdingsList { display: flex; flex-direction: column; }
+
+@media (min-width: 768px) {
+  .page        { margin-left: 240px; }
+  .header      { padding: 40px 40px 8px; }
+  .summaryCard { margin: 16px 40px; }
+  .holdings    { padding: 0 40px; }
+  .holdingsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 14px;
+  }
+  .fab    { bottom: 40px; right: 40px; }
+  .spacer { height: 40px; }
+}
