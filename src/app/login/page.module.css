@@ -96,6 +96,12 @@
   gap: 6px;
 }
 
+.nameRow {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
 .label {
   color: var(--text-secondary);
   font-size: 13px;

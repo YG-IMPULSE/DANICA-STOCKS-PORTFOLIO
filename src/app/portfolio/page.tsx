@@ -20,11 +20,11 @@ const PULSE = [
   { symbol: 'SPY',  label: 'S&P 500'         },
   { symbol: 'QQQ',  label: 'NASDAQ'           },
   { symbol: 'DIA',  label: 'DOW'              },
+  { symbol: 'VINE', label: 'Fresh Vine Wine'  },
   { symbol: 'NVDA', label: 'NVDA'             },
   { symbol: 'AAPL', label: 'AAPL'             },
   { symbol: 'TSLA', label: 'TSLA'             },
   { symbol: 'GLD',  label: 'GOLD'             },
-  { symbol: 'VINE', label: 'Fresh Vine Wine'  },
 ]
 
 interface PulseItem extends Partial<StockData> {
@@ -37,6 +37,7 @@ export default function PortfolioPage() {
   const [holdings, setHoldings] = useState<HoldingWithPrice[]>([])
   const [pageLoading, setPageLoading] = useState(true)
   const [userEmail, setUserEmail] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [pulse, setPulse] = useState<PulseItem[]>(
     PULSE.map((p) => ({ symbol: p.symbol, label: p.label, isLoading: true }))
   )
@@ -86,6 +87,10 @@ export default function PortfolioPage() {
         return
       }
       setUserEmail(user.email ?? '')
+      setDisplayName(
+        user.user_metadata?.first_name ||
+        (user.email ?? '').split('@')[0].split('.')[0]
+      )
 
       const { data } = await supabase
         .from('holdings')
@@ -150,7 +155,7 @@ export default function PortfolioPage() {
   const totalPnlPct = totalCost > 0 ? (totalPnl / totalCost) * 100 : 0
   const isPositive = totalPnl >= 0
 
-  const firstName = userEmail.split('@')[0].split('.')[0]
+  const firstName = displayName
   const hour = new Date().getHours()
   const greeting =
     hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'

@@ -9,6 +9,8 @@ import styles from './page.module.css'
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false)
+  const [firstName, setFirstName] = useState('')
+  const [lastName,  setLastName]  = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -29,6 +31,10 @@ export default function LoginPage() {
         password,
         options: {
           emailRedirectTo: `${window.location.origin}/api/auth/callback`,
+          data: {
+            first_name: firstName.trim(),
+            last_name:  lastName.trim(),
+          },
         },
       })
       if (error) {
@@ -54,6 +60,8 @@ export default function LoginPage() {
 
   function toggle() {
     setIsSignUp(!isSignUp)
+    setFirstName('')
+    setLastName('')
     setError('')
     setMessage('')
   }
@@ -81,6 +89,36 @@ export default function LoginPage() {
 
         {error && <div className={styles.errorBox}>{error}</div>}
         {message && <div className={styles.successBox}>{message}</div>}
+
+        {isSignUp && (
+          <div className={styles.nameRow}>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="firstName">First Name</label>
+              <input
+                id="firstName"
+                className={styles.input}
+                type="text"
+                placeholder="Jane"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required={isSignUp}
+                autoComplete="given-name"
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="lastName">Last Name</label>
+              <input
+                id="lastName"
+                className={styles.input}
+                type="text"
+                placeholder="Doe"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                autoComplete="family-name"
+              />
+            </div>
+          </div>
+        )}
 
         <div className={styles.field}>
           <label className={styles.label} htmlFor="email">
