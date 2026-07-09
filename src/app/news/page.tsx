@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import BottomNav from '@/components/BottomNav'
 import styles from './page.module.css'
