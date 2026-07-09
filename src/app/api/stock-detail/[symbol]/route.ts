@@ -1,5 +1,34 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
+/** Simulated detail data for VINE (Fresh Vine Wine IPO) */
+function vineDetail() {
+  const prevClose = 9.20
+  const price     = Math.max(8.10, +(9.60 + (Math.random() - 0.35) * 2.4).toFixed(2))
+  const change    = +(price - prevClose).toFixed(2)
+  const changePercent = +((change / prevClose) * 100).toFixed(2)
+  return {
+    symbol:      'VINE',
+    name:        'Fresh Vine Wine, Inc.',
+    exchange:    'NYSE American',
+    currency:    'USD',
+    industry:    'Consumer Staples',
+    website:     'https://www.freshvinewine.com',
+    marketCap:   +(2_200_000 * price / 1_000_000).toFixed(4), // in millions
+    currentPrice: price,
+    change,
+    changePercent,
+    open:        +(prevClose + (Math.random() - 0.4) * 0.6).toFixed(2),
+    high:        +(price + Math.random() * 0.45).toFixed(2),
+    low:         +(Math.max(7.90, price - Math.random() * 0.55)).toFixed(2),
+    prevClose,
+    weekHigh52:  +(price + Math.random() * 0.80).toFixed(2),
+    weekLow52:   9.00, // IPO floor price
+    peRatio:     null,
+    eps:         null,
+    recommendation: null,
+  }
+}
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ symbol: string }> }
@@ -29,6 +58,7 @@ export async function GET(
     ])
 
     if (!quote.c || quote.c === 0) {
+      if (upper === 'VINE') return NextResponse.json(vineDetail())
       return NextResponse.json({ error: 'Symbol not found or market closed' }, { status: 404 })
     }
 
