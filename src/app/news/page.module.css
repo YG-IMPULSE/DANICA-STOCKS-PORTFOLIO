@@ -147,10 +147,45 @@
 
 .spacer { height: 88px; }
 
+/* ── Category filter bar ──────────────── */
+.filterBar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 20px 16px;
+  scrollbar-width: none;
+}
+.filterBar::-webkit-scrollbar { display: none; }
+
+.filterPill {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.filterPill:hover { border-color: var(--orange); color: var(--orange); }
+
+.activeFilterPill {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}
+
+.activeFilterPill:hover { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
+
 /* ── Desktop ─────────────────── */
 @media (min-width: 768px) {
-  .page   { margin-left: 240px; }
-  .header { padding: 40px 40px 16px; }
+  .page      { margin-left: 240px; }
+  .header    { padding: 40px 40px 4px; }
+  .filterBar { padding: 0 40px 16px; }
   .feed {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

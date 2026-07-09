@@ -3,9 +3,15 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer;
   margin-bottom: 10px;
   padding: 14px 16px;
   position: relative;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 4px 16px rgba(249,115,22,0.12);
 }
 
 /* ── Top row ─────────────────── */

@@ -126,10 +126,55 @@
 
 .spacer { height: 88px; }
 
+/* ── Sector filter bar ───────────────── */
+.sectorBar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 20px 16px;
+  scrollbar-width: none;
+}
+.sectorBar::-webkit-scrollbar { display: none; }
+
+.sectorPill {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.sectorPill:hover { border-color: var(--orange); color: var(--orange); }
+
+.activePill {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}
+
+.activePill:hover { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
+
+.stockCount {
+  background: var(--orange-light);
+  border: 1px solid rgba(249,115,22,0.2);
+  border-radius: 20px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+}
+
 /* ── Desktop ─────────────────── */
 @media (min-width: 768px) {
   .page    { margin-left: 240px; }
-  .header  { padding: 40px 40px 16px; }
+  .header  { padding: 40px 40px 4px; align-items: center; display: flex; gap: 12px; }
+  .sectorBar { padding: 0 40px 16px; }
   .section { padding: 0 40px 24px; }
   .indicesGrid { grid-template-columns: repeat(3, 1fr); }
   .tickerList {

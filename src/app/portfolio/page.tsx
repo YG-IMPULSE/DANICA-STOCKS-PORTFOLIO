@@ -16,10 +16,29 @@ interface HoldingWithPrice extends Holding {
   isLoading: boolean
 }
 
+const PULSE = [
+  { symbol: 'SPY',  label: 'S&P 500' },
+  { symbol: 'QQQ',  label: 'NASDAQ'  },
+  { symbol: 'DIA',  label: 'DOW'     },
+  { symbol: 'NVDA', label: 'NVDA'    },
+  { symbol: 'AAPL', label: 'AAPL'    },
+  { symbol: 'TSLA', label: 'TSLA'    },
+  { symbol: 'GLD',  label: 'GOLD'    },
+]
+
+interface PulseItem extends Partial<StockData> {
+  symbol: string
+  label: string
+  isLoading: boolean
+}
+
 export default function PortfolioPage() {
   const [holdings, setHoldings] = useState<HoldingWithPrice[]>([])
   const [pageLoading, setPageLoading] = useState(true)
   const [userEmail, setUserEmail] = useState('')
+  const [pulse, setPulse] = useState<PulseItem[]>(
+    PULSE.map((p) => ({ symbol: p.symbol, label: p.label, isLoading: true }))
+  )
   const router = useRouter()
   const supabase = createClient()
 
@@ -81,6 +100,30 @@ export default function PortfolioPage() {
     }
     load()
   }, [router, supabase, fetchPrices])
+
+  // Fetch market pulse independently
+  useEffect(() => {
+    PULSE.forEach(({ symbol, label }, i) => {
+      fetch(`/api/stocks/${symbol}`)
+        .then((r) => r.json())
+        .then((data) =>
+          setPulse((prev) => {
+            const next = [...prev]
+            next[i] = data.error
+              ? { symbol, label, isLoading: false }
+              : { ...data, symbol, label, isLoading: false }
+            return next
+          })
+        )
+        .catch(() =>
+          setPulse((prev) => {
+            const next = [...prev]
+            next[i] = { symbol, label, isLoading: false }
+            return next
+          })
+        )
+    })
+  }, [])
 
   async function handleDelete(id: string) {
     await supabase.from('holdings').delete().eq('id', id)
@@ -191,6 +234,45 @@ export default function PortfolioPage() {
                 onDelete={handleDelete}
               />
             ))}
+          </div>
+        )}
+
+        {/* Market Watch — listed after user holdings */}
+        {!pageLoading && (
+          <div className={styles.watchSection}>
+            <p className={styles.watchDivider}>Market Watch</p>
+            <div className={styles.watchList}>
+              {PULSE.map(({ symbol, label }, i) => {
+                const d   = pulse[i]
+                const pct = d?.changePercent ?? 0
+                const up  = pct >= 0
+                return (
+                  <div key={symbol} className={styles.watchCard} onClick={() => router.push(`/stock/${symbol}`)} style={{ cursor: 'pointer' }}>
+                    <div className={styles.watchLeft}>
+                      <div className={styles.watchIcon}>{symbol[0]}</div>
+                      <div>
+                        <p className={styles.watchSymbol}>{symbol}</p>
+                        <p className={styles.watchName}>{label}</p>
+                      </div>
+                    </div>
+                    <div className={styles.watchRight}>
+                      {d?.isLoading ? (
+                        <div className={styles.watchSkeleton} />
+                      ) : (
+                        <>
+                          <p className={styles.watchPrice}>
+                            ${(d?.currentPrice ?? 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </p>
+                          <p className={`${styles.watchPct} ${up ? styles.watchUp : styles.watchDown}`}>
+                            {up ? '+' : ''}{pct.toFixed(2)}%
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )}
       </section>

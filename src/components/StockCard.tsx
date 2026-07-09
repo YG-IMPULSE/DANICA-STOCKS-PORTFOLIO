@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import type { Holding, StockData } from '@/lib/types'
 import styles from './StockCard.module.css'
 
@@ -34,6 +35,7 @@ export default function StockCard({
   onDelete,
 }: Props) {
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const router = useRouter()
 
   const currentPrice = stockData?.currentPrice ?? holding.avg_buy_price
   const totalValue = holding.shares * currentPrice
@@ -44,7 +46,7 @@ export default function StockCard({
   const color = iconColor(holding.symbol)
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => router.push(`/stock/${holding.symbol}`)}>
       {/* Top row */}
       <div className={styles.top}>
         <div className={styles.left}>
@@ -108,6 +110,7 @@ export default function StockCard({
       </div>
 
       {/* Delete control */}
+      <div onClick={(e) => e.stopPropagation()}>
       {!confirmDelete ? (
         <button
           className={styles.deleteBtn}
@@ -135,6 +138,7 @@ export default function StockCard({
           </button>
         </div>
       )}
+      </div>
     </div>
   )
 }

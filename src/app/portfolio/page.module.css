@@ -193,6 +193,77 @@
 /* ── Desktop ────────────────────────── */
 .holdingsList { display: flex; flex-direction: column; }
 
+/* ── Market Watch List ─────────────────── */
+.watchSection { margin-top: 8px; }
+
+.watchDivider {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 16px 0 4px;
+  text-transform: uppercase;
+}
+
+.watchList { display: flex; flex-direction: column; gap: 6px; }
+
+.watchCard {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 14px;
+}
+
+.watchLeft  { align-items: center; display: flex; gap: 12px; }
+.watchRight { align-items: flex-end; display: flex; flex-direction: column; gap: 2px; }
+
+.watchIcon {
+  align-items: center;
+  background: var(--orange-light);
+  border-radius: 10px;
+  color: var(--orange);
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.watchSymbol {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.watchName {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.watchPrice {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.watchPct  { font-size: 12px; font-weight: 600; }
+.watchUp   { color: var(--green); }
+.watchDown { color: var(--red); }
+
+.watchSkeleton {
+  animation: pulse 1.5s ease-in-out infinite;
+  background: var(--border);
+  border-radius: 6px;
+  height: 32px;
+  width: 80px;
+}
+
 @media (min-width: 768px) {
   .page        { margin-left: 240px; }
   .header      { padding: 40px 40px 8px; }

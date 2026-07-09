@@ -13,7 +13,18 @@ interface NewsItem {
   url: string
   image: string
   datetime: number
+  category?: string
 }
+
+type NewsFilter = 'all' | 'general' | 'forex' | 'crypto' | 'merger'
+
+const FILTERS: { id: NewsFilter; label: string }[] = [
+  { id: 'all',     label: 'All'    },
+  { id: 'general', label: 'Markets'},
+  { id: 'forex',   label: 'Forex'  },
+  { id: 'crypto',  label: 'Crypto' },
+  { id: 'merger',  label: 'M&A'   },
+]
 
 function timeAgo(ts: number): string {
   const s = Math.floor(Date.now() / 1000 - ts)
@@ -27,16 +38,19 @@ export default function NewsPage() {
   const [news, setNews]       = useState<NewsItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError]     = useState(false)
+  const [filter, setFilter]   = useState<NewsFilter>('all')
 
   useEffect(() => {
     fetch('/api/news')
       .then((r) => r.json())
-      .then((data) => {
-        setNews(Array.isArray(data) ? data.slice(0, 25) : [])
-        setLoading(false)
-      })
+        .then((data) => {
+          setNews(Array.isArray(data) ? data : [])
+          setLoading(false)
+        })
       .catch(() => { setError(true); setLoading(false) })
   }, [])
+
+  const displayed = filter === 'all' ? news : news.filter((n) => n.category === filter)
 
   return (
     <div className={styles.page}>
@@ -44,6 +58,19 @@ export default function NewsPage() {
         <h1 className={styles.title}>Market News</h1>
         <div className={styles.liveDot} title="Live" />
       </header>
+
+      {/* Category filter pills */}
+      <div className={styles.filterBar}>
+        {FILTERS.map((f) => (
+          <button
+            key={f.id}
+            className={`${styles.filterPill} ${filter === f.id ? styles.activeFilterPill : ''}`}
+            onClick={() => setFilter(f.id)}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
 
       <div className={styles.feed}>
         {loading &&
@@ -58,7 +85,7 @@ export default function NewsPage() {
             </div>
           ))}
 
-        {!loading && (error || news.length === 0) && (
+        {!loading && (error || displayed.length === 0) && (
           <div className={styles.empty}>
             <p>No news available right now.</p>
             <p>Check back in a few minutes.</p>
@@ -66,7 +93,7 @@ export default function NewsPage() {
         )}
 
         {!loading &&
-          news.map((item) => (
+          displayed.slice(0, 30).map((item) => (
             <a
               key={item.id}
               href={item.url}

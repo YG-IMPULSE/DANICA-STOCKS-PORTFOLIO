@@ -1,0 +1,282 @@
+.page {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 430px;
+  min-height: 100dvh;
+}
+
+/* ── Header ──────────────────────────── */
+.header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 56px 20px 8px;
+}
+
+.backBtn {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 40px;
+  justify-content: center;
+  transition: border-color 0.15s;
+  width: 40px;
+}
+.backBtn:hover { border-color: var(--orange); color: var(--orange); }
+
+.headerSymbol {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── Hero ─────────────────────────────── */
+.hero {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px 4px;
+}
+
+.heroIcon {
+  align-items: center;
+  border-radius: 16px;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 800;
+  height: 56px;
+  justify-content: center;
+  width: 56px;
+}
+
+.heroSymbol {
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.heroName {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+
+.heroMeta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+
+/* ── Price ───────────────────────────── */
+.priceBlock {
+  padding: 16px 20px 8px;
+}
+
+.price {
+  color: var(--text-primary);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.priceRow {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.changeUp   { color: var(--green); font-size: 14px; font-weight: 600; }
+.changeDown { color: var(--red);   font-size: 14px; font-weight: 600; }
+
+.today {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Key Stats ───────────────────────── */
+.statsSection {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin: 16px 20px 0;
+  padding: 16px;
+}
+
+.sectionTitle {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.statsGrid {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.statBox {
+  background: var(--bg);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 10px;
+}
+
+.statLabel {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.statVal {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ── Generic Section ─────────────────── */
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin: 12px 20px 0;
+  padding: 16px;
+}
+
+/* ── Analyst Ratings ─────────────────── */
+.recPeriod {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  margin: -6px 0 12px;
+}
+
+.ratingBar {
+  border-radius: 6px;
+  display: flex;
+  gap: 2px;
+  height: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.buyBar  { background: var(--green); min-width: 2px; }
+.holdBar { background: #f59e0b;       min-width: 2px; }
+.sellBar { background: var(--red);   min-width: 2px; }
+
+.ratingLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.buyLbl  { color: var(--green); font-size: 12px; font-weight: 700; }
+.holdLbl { color: #f59e0b;       font-size: 12px; font-weight: 700; }
+.sellLbl { color: var(--red);   font-size: 12px; font-weight: 700; }
+
+/* ── About ───────────────────────────── */
+.aboutGrid { display: flex; flex-direction: column; gap: 12px; }
+
+.aboutRow {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.aboutLabel {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.aboutVal {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.aboutLink {
+  color: var(--orange);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* ── Skeletons ───────────────────────── */
+.skeletonHero,
+.skeletonPrice,
+.skeletonGrid {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 16px 20px 0;
+}
+.skeletonHero  { height: 80px; }
+.skeletonPrice { height: 70px; }
+.skeletonGrid  { height: 220px; }
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Error ───────────────────────────── */
+.errorState {
+  align-items: center;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  gap: 20px;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.errorState button {
+  background: var(--orange);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 28px;
+}
+
+.spacer { height: 48px; }
+
+/* ── Desktop ─────────────────────────── */
+@media (min-width: 768px) {
+  .page         { margin-left: 240px; }
+  .header       { padding: 40px 40px 8px; }
+  .hero         { padding: 16px 40px 4px; }
+  .priceBlock   { padding: 16px 40px 8px; }
+  .statsSection { margin: 16px 40px 0; }
+  .section      { margin: 12px 40px 0; }
+  .spacer       { height: 40px; }
+
+  .statsGrid { grid-template-columns: repeat(3, 1fr); }
+}
